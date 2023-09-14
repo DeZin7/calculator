@@ -33,6 +33,12 @@ pipeline {
           }
         }
 
+        stage('Static code analysis') {
+          steps {
+            sh './gradlew checkstyleMain'
+          }
+        }
+        
       }
     }
 
