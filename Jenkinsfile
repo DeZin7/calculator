@@ -47,3 +47,10 @@ pipeline {
 
   }
 }
+  post {
+    always {
+      mail to: 'marcusandre77@icloud.com'
+      subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
+      body: "Your build completed, please check: ${env.BUILD_URL}"
+    }
+  }
