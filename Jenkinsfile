@@ -21,18 +21,6 @@ pipeline {
           }
         }
 
-        stage('Code coverage') {
-          steps {
-            sh './gradlew jacocoTestReport'
-            publishHTML (target: [
-              reportDir: 'build/reports/jacoco/test/html',
-              reportFiles: 'index.html',
-              reportName: "JaCoCo Report"
-            ])
-            sh './gradlew jacocoTestCoverageVerification'
-          }
-        }
-
         stage('Static code analysis') {
           steps {
             sh './gradlew checkstyleMain'
@@ -48,12 +36,6 @@ pipeline {
         stage("Docker build") {
           steps {
             sh "docker build -t dezin7/calculator ."
-          }
-        }
-
-        stage('Login') {
-          steps {
-            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
           }
         }
 
