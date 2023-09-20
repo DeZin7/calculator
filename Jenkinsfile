@@ -50,6 +50,12 @@ pipeline {
             sh "docker build -t dezin7/calculator ."
           }
         }
+
+        stage("Docker push") {
+          steps {
+            sh "docker push dezin7/calculator"
+          }
+        }
       }
     }
 
