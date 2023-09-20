@@ -53,7 +53,6 @@ pipeline {
 
         stage("Docker push") {
           steps {
-            sh "docker login"
             sh "docker push dezin7/calculator"
           }
         }
