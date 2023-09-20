@@ -45,6 +45,12 @@ pipeline {
             sh "docker push dezin7/calculator"
           }
         }
+
+        stage("Deploy to staging") {
+          steps {
+            sh "docker run -d --rm -p 8765:8080 --name calculator dezin7/calculator"
+          }
+        }
       }
     }
 
