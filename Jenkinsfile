@@ -41,6 +41,7 @@ pipeline {
 
         stage("Docker push") {
           steps {
+            sh "cat ~/my_password.txt | docker login --username foo --password-stdin"
             sh "docker push dezin7/calculator"
           }
         }
