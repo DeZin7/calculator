@@ -48,7 +48,7 @@ pipeline {
 
         stage("Deploy to staging") {
           steps {
-            sh "docker run -d --rm -p 8765:8080 --name calculator1 dezin7/calculator"
+            sh "docker run -d --rm -p 8765:8080 --name calculator dezin7/calculator"
           }
         }
 
