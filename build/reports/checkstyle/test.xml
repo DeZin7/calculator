@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="9.3">
-<file name="/Users/dezin7/calculator/src/test/java/com/dezin/calculator/CalculatorTest.java">
+<file name="/Users/dezin7/calculator/src/test/java/acceptance/AcceptanceTest.java">
 </file>
-<file name="/Users/dezin7/calculator/src/test/java/com/dezin/calculator/CalculatorApplicationTests.java">
+<file name="/Users/dezin7/calculator/src/test/java/acceptance/StepDefinitions.java">
+</file>
+<file name="/Users/dezin7/calculator/src/test/java/com/dezin/calculator/CalculatorTest.java">
 </file>
 </checkstyle>
