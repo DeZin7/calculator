@@ -51,6 +51,13 @@ pipeline {
             sh "docker run -d --rm -p 8765:8080 --name calculator dezin7/calculator"
           }
         }
+
+        stage("Acceptance test") {
+          steps {
+            sleep 60
+            sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
+          }
+        }
       }
     }
 
@@ -58,8 +65,6 @@ pipeline {
 }
   post {
     always {
-      mail to: 'marcusandre77@icloud.com',
-      subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
-      body: "Your build is completed, please check: ${env.BUILD_URL}"
+         sh "docker stop calculator"
     }
   }
