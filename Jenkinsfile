@@ -27,7 +27,7 @@ pipeline {
           }
         }
         
-        stage("Package") {
+        stage("Build") {
           steps {
             sh "./gradlew build"
           }
@@ -35,20 +35,20 @@ pipeline {
 
         stage("Docker build") {
           steps {
-            sh "docker build -t dezin7/calculator ."
+            sh "docker build -t dezin7/calculator:${BUILD_TIMESTAMP} ."
           }
         }
 
         stage("Docker push") {
           steps {
             sh "docker login"
-            sh "docker push dezin7/calculator"
+            sh "docker push dezin7/calculator:${BUILD_TIMESTAMP}"
           }
         }
 
         stage("Deploy to staging") {
           steps {
-            sh "docker run -d --rm -p 8765:8080 --name calculator dezin7/calculator"
+            sh "docker run -d --rm -p 8765:8080 --name calculator dezin7/calculator:${BUILD_TIMESTAMP}"
           }
         }
 
