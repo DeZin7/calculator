@@ -1,13 +1,13 @@
 pipeline {
-  node {
-  stage('Apply Kubernetes files') {
-    withKubeConfig([credentialsId: 'Marcus Carneiro', serverUrl: 'https://api.k8s.my-company.com']) {
-      sh 'kubectl apply -f my-kubernetes-directory'
-    }
-  }
-}
   agent any
   stages {
+    node {
+      stage('Apply Kubernetes files') {
+          withKubeConfig([credentialsId: 'Marcus Carneiro', serverUrl: 'https://api.k8s.my-company.com']) {
+            sh 'kubectl apply -f my-kubernetes-directory'
+          }
+        }
+      }
     stage('Checkout') {
       parallel {
         stage('Checkout') {
