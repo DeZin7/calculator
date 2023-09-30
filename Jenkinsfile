@@ -96,3 +96,10 @@ pipeline {
     }
   }
 }
+node {
+  stage('Apply Kubernetes files') {
+    withKubeConfig([credentialsId: 'Marcus Carneiro', serverUrl: 'https://api.k8s.my-company.com']) {
+      sh 'kubectl apply -f my-kubernetes-directory'
+    }
+  }
+}
