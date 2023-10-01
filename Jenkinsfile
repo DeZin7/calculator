@@ -53,8 +53,8 @@ pipeline {
         }
 
         stage("Deploy to staging") {
-          withKubeCredentials:
            steps {
+            sh "chmod +x kubectl"
             sh "kubectl use-context arn:aws:eks:us-west-1:846825716254:cluster/staging"
             sh "kubectl apply -f hazelcast.yaml"
             sh "kubectl apply -f deployment.yaml"
