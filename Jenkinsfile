@@ -59,7 +59,7 @@ pipeline {
                           serverUrl: 'https://5CFE154153C036FD5FAFDCB91C628CAC.gr7.us-west-2.eks.amazonaws.com',
                           clusterName: 'arn:aws:eks:us-west-2:846825716254:cluster/staging'
                           ]) {
-            sh "kubectl use-context arn:aws:eks:us-west-2:846825716254:cluster/staging"
+            sh "kubectl config use-context arn:aws:eks:us-west-2:846825716254:cluster/staging"
             sh "kubectl apply -f hazelcast.yaml"
             sh "kubectl apply -f deployment.yaml"
             sh "kubectl apply -f service.yaml"
