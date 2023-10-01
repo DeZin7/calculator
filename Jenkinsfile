@@ -60,7 +60,7 @@ pipeline {
                           clusterName: 'arn:aws:eks:us-west-2:846825716254:cluster/staging'
                           ]) {
             sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.25.4/bin/linux/amd64/kubectl"'
-            sh 'chmod u+x ./kubectl'                
+            sh 'chmod u+x /usr/local/bin/kubectl'                
             sh 'kubectl config use-context arn:aws:eks:us-west-2:846825716254:cluster/staging'
             sh 'kubectl apply -f hazelcast.yaml'
             sh 'kubectl apply -f deployment.yaml'
