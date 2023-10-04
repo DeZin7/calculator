@@ -57,7 +57,7 @@ pipeline {
           withKubeConfig([credentialsId: 'kubectl',
                           caCertificate: 'MIIDBjCCAe6gAwIBAgIBATANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwptaW5pa3ViZUNBMB4XDTIzMDUyMzIxMDU1MloXDTMzMDUyMTIxMDU1MlowFTETMBEGA1UEAxMKbWluaWt1YmVDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAM91hCLoLWoFHH4abesrWM71RGGItpa/jRp+GDAOsd+IXIdOJux/a1xL5pTm5XTzhptxbIW84HyiPYDYlSQf8dwjTojjxdygK87OTwXOr+0qMmMJxgVOkLBFzgaE3tcyoyQVGLTAIMIdwJtbItRCEVzZpFA4DTlF9rUEceDpOJDz2Hw/IYXZH82RoJ2oRd5xocPRr95zwkHR+LC/eHFy8oO/nTK7Usqjrd/btvfd/wxzJIWg/axndFQB6ZC0vlQOozMyJCjhRfym4ZAPg5Ae1IyDVvEwOxU/U3KetKuRJaKSjr//Lxwq2CVXxc6/e4MtKnY3jwrrvidW5BDKYwskkFsCAwEAAaNhMF8wDgYDVR0PAQH/BAQDAgKkMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTYNQtnB8+RIj0ikKeT/R5kB65kzjANBgkqhkiG9w0BAQsFAAOCAQEAqvRZO0kzP7Yxq7+BZbrwWj7iVaA8ZgCYnHSfC5U684AqDFzJREO0wAdZWsZ95VIR8013L3RUyAMSfgOnjEu+J14wF2CqYFsDYTb+JKUOOdRYFQbtdAYx8bEJR8qdflJbE8psinh2sregANZ+zFKSXHYk4B6LWhrMt1OTxZynLRu/mg4MnsGcuMexEhRhfILyYoPwOULJ0sqwSqv4QHIC7iGz/VlLX6IiX3+UbuYEdrOmnj7uaM5tcIfXVd0A7CwylM755lNuzBwM1V9mMtI6ZMRe5zl0G5PzfrM7fqIHGHA0kN/r2uNcR6EhrKAElwMQuHvSkr8SBr/6bT5dDmsLAg==',
                           contextName: 'minikube',
-                          serverUrl: 'https://localhost:51176',
+                          //serverUrl: 'https://127.0.0.1:51176',
                           clusterName: 'minikube'
                           ]) {
             sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.25.4/bin/linux/amd64/kubectl"'
