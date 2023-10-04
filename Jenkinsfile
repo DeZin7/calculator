@@ -55,14 +55,14 @@ pipeline {
 
         stage("Deploy to staging") { steps {
           withKubeConfig([credentialsId: 'kubectl',
-                          caCertificate: 'MIIC/jCCAeagAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJlcm5ldGVzMB4XDTIzMDkyNDA2NTkxMFoXDTMzMDkyMTA2NTkxMFowFTETMBEGA1UEAxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANvbQnt4spQVVK3jBHzh8iZKxhhYdB8po66RaNCHXBeNgsdQ+nbZcGKVR7vgIHk2vo+S8gLk8KEdHez57s0tXhNgJDlu5D6hxUC8HZ36nsCBI6LXBkoiF3khf+VcMCDwFaKRsfHYHFoHyKFDUp6o17f1cXISqZEapcIUOdzYC4kwHP9JzXRzvBE0mpVBEdb9tTrwm85FENE0PXML3gHAnFYWattIez2jDrglvbw5dxfYTeyUK+OkmDmOFNeLguO/xvTR8V0qR2gzWCqhiym0tp7xzLLhGCP0hlf240aJsoBCpvBC8tvyPD+ZbKgTEs1BvVOaRAw3LRb98a+rsROG1BsCAwEAAaNZMFcwDgYDVR0PAQH/BAQDAgKkMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFOqjsf42tvNUYjFdCi43OENlCj3QMBUGA1UdEQQOMAyCCmt1YmVybmV0ZXMwDQYJKoZIhvcNAQELBQADggEBAFqWLYwzjV0lz69uHxt+X4QYD3M9cJwX8iyUgvbZoEQMxfMZbS6+VWMPM1IHPAfKyTptaTMbBMZ7YJ8KEVz0hsf7q8lB0ndfW6xFnGXSFY2OjEBvfYDH4vabVxUkahJAFo74uBoIAQapKDR4WmoNEPmtegyRpbGZOr8JRiiS0ZJLuPNF3gu7zKw6i63gTMGKcoFWOmX3WWQjJRML51kG+sQW3qXJlruKkuy0gTnUUYT4JabHSyIE43KCWv8i6IPfuiw9vzcKe62bC0l2Snq6uo96BXirndT2vDtxYrD6SBUFfNRhaotsMd/m9bnayvFnMo+suQ7IPMpunAjM2qQen4Q=',
-                          contextName: 'docker-desktop',
-                          serverUrl: 'https://127.0.0.1:6443',
-                          clusterName: 'docker-desktop'
+                          caCertificate: 'MIIDBjCCAe6gAwIBAgIBATANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwptaW5pa3ViZUNBMB4XDTIzMDUyMzIxMDU1MloXDTMzMDUyMTIxMDU1MlowFTETMBEGA1UEAxMKbWluaWt1YmVDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAM91hCLoLWoFHH4abesrWM71RGGItpa/jRp+GDAOsd+IXIdOJux/a1xL5pTm5XTzhptxbIW84HyiPYDYlSQf8dwjTojjxdygK87OTwXOr+0qMmMJxgVOkLBFzgaE3tcyoyQVGLTAIMIdwJtbItRCEVzZpFA4DTlF9rUEceDpOJDz2Hw/IYXZH82RoJ2oRd5xocPRr95zwkHR+LC/eHFy8oO/nTK7Usqjrd/btvfd/wxzJIWg/axndFQB6ZC0vlQOozMyJCjhRfym4ZAPg5Ae1IyDVvEwOxU/U3KetKuRJaKSjr//Lxwq2CVXxc6/e4MtKnY3jwrrvidW5BDKYwskkFsCAwEAAaNhMF8wDgYDVR0PAQH/BAQDAgKkMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTYNQtnB8+RIj0ikKeT/R5kB65kzjANBgkqhkiG9w0BAQsFAAOCAQEAqvRZO0kzP7Yxq7+BZbrwWj7iVaA8ZgCYnHSfC5U684AqDFzJREO0wAdZWsZ95VIR8013L3RUyAMSfgOnjEu+J14wF2CqYFsDYTb+JKUOOdRYFQbtdAYx8bEJR8qdflJbE8psinh2sregANZ+zFKSXHYk4B6LWhrMt1OTxZynLRu/mg4MnsGcuMexEhRhfILyYoPwOULJ0sqwSqv4QHIC7iGz/VlLX6IiX3+UbuYEdrOmnj7uaM5tcIfXVd0A7CwylM755lNuzBwM1V9mMtI6ZMRe5zl0G5PzfrM7fqIHGHA0kN/r2uNcR6EhrKAElwMQuHvSkr8SBr/6bT5dDmsLAg==',
+                          contextName: 'minikube',
+                          serverUrl: 'https://127.0.0.1:51176',
+                          clusterName: 'minikube'
                           ]) {
             sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.25.4/bin/linux/amd64/kubectl"'
             sh 'chmod u+x ./kubectl'                
-            sh './kubectl config use-context docker-desktop'
+            sh './kubectl config use-context minikube'
             sh './kubectl apply -f hazelcast.yaml'
             sh './kubectl apply -f deployment.yaml'
             sh './kubectl apply -f service.yaml'
