@@ -56,9 +56,9 @@ pipeline {
         stage("Deploy to staging") { steps {
           withKubeConfig([credentialsId: 'kubectl',
                           caCertificate: 'MIIC/jCCAeagAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJlcm5ldGVzMB4XDTIzMTAyMDA1NDYxN1oXDTMzMTAxNzA1NDYxN1owFTETMBEGA1UEAxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKpK3Q6jccyDUeN8aAsrZz/ToE02nvcrpJPiNYDeVo5c28kkzVjwUfkhufkHKqW1TpOBO7ArpHZF4NbPhJgIDih2GQU43QUVfgwhPSOclTNTDlwm12AXa9ZDe/PKkcF3TeBfjX3OVQICn68D4/nOKcsJn5LdX91b/G2qyJEQAkFhcpgBve9rI0PgKaX/4Tgl5SbPj8wariLa934Mkq5dnuup7yDArj7ZSRvEYV6tkdmw6C+CslFZhDL6NR2u8iCsfNdIL1Xn7pFLR5K5XCptAhNOp3UDmN33EVZGP6pUtmTlQAYDUPiDv9dt+WSx99XBEXYjAU7deKht/MByZZHhhXMCAwEAAaNZMFcwDgYDVR0PAQH/BAQDAgKkMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFMdEHs63xRzDra3eF4/utbm8RolaMBUGA1UdEQQOMAyCCmt1YmVybmV0ZXMwDQYJKoZIhvcNAQELBQADggEBAA9E674hFl5XoOK30KOGz4HqtiRZiJ24zf+HyoYVwLr8j03weK5GHNV8aCV3b8d0alutf3cDAfcMXSxzLWJX5Y8ocXElK+YSKe6IcgT98QjtxqgWE2aD88jNp6Ir5QKlm3m3Mj2ImWvHDjU40PPdzlhHkac+3uxLQxGzusNWPINCPcGKgkzFH6P8aW3GdRhjmh8DsCpy37Vqg1dTgy9CJElS43nf6NSYEGqBI7CNdxt62+x1sCaqEDmESQ8LUPT6TLYNoft+ykPMWoK90n0ReD9iu/wKwyJvlYMhw7lu/F/EbauT+HWOvzHniGqRTdsGUJ0MteiFiip62o51eFB2E+I=',
-                          contextName: 'minikube',
+                          contextName: 'docker-desktop',
                           serverUrl: 'https://127.0.0.1:6443',
-                          clusterName: 'minikube'
+                          clusterName: 'docker-desktop'
                           ]) {
             sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.25.4/bin/linux/amd64/kubectl"'
             sh 'chmod u+x ./kubectl'                
