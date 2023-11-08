@@ -63,6 +63,7 @@ pipeline {
             sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.25.4/bin/linux/amd64/kubectl"'
             sh 'chmod u+x ./kubectl'                
             sh './kubectl config use-context minikube'
+            sh 'minikube ssh'
             sh './kubectl apply -f hazelcast.yaml'
             sh './kubectl apply -f deployment.yaml'
             sh './kubectl apply -f service.yaml'
